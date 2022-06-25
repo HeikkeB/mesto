@@ -25,16 +25,30 @@
                 <button class="profile__btn-add" type="button"></button>
             </section>
             <section class="elements">
-                <article class="elements__element">
-                    <img class="elements__img" src="" alt="">
-                    <h2 class="elements__title"></h2>
-                    <button class="elements__btn-like" type="button"></button>
+                <article class="element">
+                    <img class="element__img" src="" alt="">
+                    <div class="element__description">
+                        <h2 class="element__title"></h2>
+                        <button class="element__btn-like" type="button"></button>
+                    </div>
                 </article>
             </section>
         </main>
         <footer class="footer">
             <p class="footer__copyright">&#169; 2022 Mesto Russia</p>
         </footer>
+
+        <div class="popup">
+            <div class="popup__container">
+                <button class="popup__closed" type="button" aria-label="Закрыть"></button>
+                <h2 class="popup__title">Редактировать профиль</h2>
+                <form class="popup__form" action="#" name="form" method="post">
+                    <input type="text" class="popup__input_name" name="user" placeholder="Имя">
+                    <input type="text" class="popup__input_bisness" name="bisness" placeholder="Занятие">
+                    <button class="popup__submit-btn" type="button">Сохранить</button>
+                </form>
+            </div>
+        </div>
     </div>
 
 </body>
