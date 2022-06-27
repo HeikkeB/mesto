@@ -18,13 +18,14 @@
             <section class="profile">
                 <img class="profile__avatar" src="./images/image.png" alt="аватар">
                 <div class="profile__info">
-                    <h2 class="profile__username"></h2>
-                    <p class="profile__description"></p>
-                    <button class="profile__btn-edit" type="button"></button>
+                    <h1 class="profile__username">Жак-Ив Кусто</h2>
+                        <p class="profile__description">Исследователь океана</p>
+                        <button class="profile__btn-edit" type="button"></button>
                 </div>
                 <button class="profile__btn-add" type="button"></button>
             </section>
-            <section class="elements">
+
+            <section class="elements" aria-label="elements">
                 <article class="element">
                     <img class="element__img" src="" alt="">
                     <div class="element__description">
@@ -34,6 +35,7 @@
                 </article>
             </section>
         </main>
+
         <footer class="footer">
             <p class="footer__copyright">&#169; 2022 Mesto Russia</p>
         </footer>
@@ -43,8 +45,9 @@
                 <button class="popup__closed" type="button" aria-label="Закрыть"></button>
                 <h2 class="popup__title">Редактировать профиль</h2>
                 <form class="popup__form" action="#" name="form" method="post">
-                    <input type="text" class="popup__input_name" name="user" placeholder="Имя">
-                    <input type="text" class="popup__input_bisness" name="bisness" placeholder="Занятие">
+                    <input type="text" class="popup__input popup__input_name" name="user" placeholder="Имя">
+                    <input type="text" class="popup__input popup__input_profession" name="profession"
+                        placeholder="Занятие">
                     <button class="popup__submit-btn" type="button">Сохранить</button>
                 </form>
             </div>
