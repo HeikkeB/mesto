@@ -1,5 +1,4 @@
 .profile {
-    border: solid 1px red;
     display: grid;
     grid-template-columns: 120px 370px 1fr 150px;
     align-items: center;
