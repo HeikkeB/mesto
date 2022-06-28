@@ -9,6 +9,11 @@
     background-position: center;
     border: 2px solid #FFFFFF;
     cursor: pointer;
+    transition: opacity .3s ease;
+}
+
+.profile__btn-add:hover {
+    opacity: .6;
 }
 
 @media screen and (max-width: 670px) {
