@@ -8,3 +8,11 @@
     padding: 0;
     margin: 0;
 }
+
+@media screen and (max-width: 670px) {
+    .profile__username {
+        font-size: 27px;
+        line-height: 1.2;
+        text-align: center;
+    }
+}

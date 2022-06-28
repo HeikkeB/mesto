@@ -10,3 +10,12 @@
     border: 1px solid #FFFFFF;
     cursor: pointer;
 }
+
+@media screen and (max-width: 670px) {
+    .profile__btn-edit {
+        width: 18px;
+        height: 18px;
+    }
+
+
+}

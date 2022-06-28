@@ -10,3 +10,10 @@
     border: 2px solid #FFFFFF;
     cursor: pointer;
 }
+
+@media screen and (max-width: 670px) {
+    .profile__btn-add {
+        margin-top: 36px;
+        width: 282px;
+    }
+}
