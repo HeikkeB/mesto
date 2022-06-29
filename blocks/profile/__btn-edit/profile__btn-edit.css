@@ -4,7 +4,7 @@
     height: 24px;
     background-color: rgba(0, 0, 0, 0);
     padding: 0;
-    background-image: url(../../../../images/btn_edit.svg);
+    background-image: url(./../../../images/btn_edit.svg);
     background-repeat: no-repeat;
     background-position: center;
     border: 1px solid #FFFFFF;
