@@ -5,12 +5,5 @@
         "profile__description .";
     gap: 16px 18px;
     margin-left: 30px;
-    align-items: end;
-}
-
-@media screen and (max-width: 670px) {
-    .profile__info {
-        align-items: center;
-    }
-
+    align-items: center;
 }
