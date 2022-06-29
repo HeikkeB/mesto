@@ -36,4 +36,4 @@ function submitPopup(evt) {
     closePopup();
 };
 
-popupForm.addEventListener('click', submitPopup);
+popupForm.addEventListener('submit', submitPopup);
