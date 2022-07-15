@@ -28,7 +28,8 @@
 
             <section class="elements" aria-label="elements">
                 <ul class="elements__list">
-                    <li class="element">
+                    <!-- <li class="element">
+                        <button class="element__btn-delete" type="button"></button>
                         <img class="element__img" src="./images/beshtau.jpg" alt="вершина горы Бештау">
                         <div class="element__description">
                             <h2 class="element__title">гора Бештау</h2>
@@ -69,7 +70,7 @@
                             <h2 class="element__title"> гора Эльбрус</h2>
                             <button class="element__btn-like" type="button"></button>
                         </div>
-                    </li>
+                    </li>-->
                 </ul>
             </section>
         </main>
@@ -78,11 +79,11 @@
             <p class="footer__copyright">&#169; 2022 Mesto Russia</p>
         </footer>
 
-        <div class="popup">
+        <div class="popup popup_edit">
             <div class="popup__container">
                 <button class="popup__closed" type="button" aria-label="Закрыть"></button>
                 <h2 class="popup__title">Редактировать профиль</h2>
-                <form class="popup__form" action="#" name="form" method="post">
+                <form class="popup__form popup__form_edit" action="#" name="form" method="post">
                     <input type="text" class="popup__input popup__input_name" name="user" placeholder="Имя">
                     <input type="text" class="popup__input popup__input_profession" name="profession"
                         placeholder="Занятие">
@@ -90,6 +91,30 @@
                 </form>
             </div>
         </div>
+
+        <div class="popup popup_add">
+            <div class="popup__container">
+                <button class="popup__closed" type="button" aria-label="Закрыть"></button>
+                <h2 class="popup__title">Новое место</h2>
+                <form class="popup__form popup__form_add" action="#" name="form" method="post">
+                    <input type="text" class="popup__input popup__input_place" name="place" placeholder="Название">
+                    <input type="url" class="popup__input popup__input_link" name="place-link"
+                        placeholder="Ссылка на картинку">
+                    <button class="popup__submit-btn popup__submit-btn_inactive" type="submit">Создать</button>
+                </form>
+            </div>
+        </div>
+
+        <template class="template__card">
+            <li class="element">
+                <img class="element__img" src=" " alt=" ">
+                <div class="element__description">
+                    <h2 class="element__title"></h2>
+                    <button class="element__btn-like" type="button"></button>
+                    <button class="element__btn-delete" type="button"></button>
+                </div>
+            </li>
+        </template>
     </div>
     <script src="./scripts/script.js"></script>
 </body>
