@@ -21,6 +21,11 @@ const addPopupSaveBtn = document.querySelector('.popup__form_add');
 const cardNamePlace = document.querySelector('.popup__input_place');
 const cardLinkPlace = document.querySelector('.popup__input_link');
 
+//popup open image
+const imgPopup = document.querySelector('.popup__gallery');
+const imgPopupPhoto = document.querySelector('.popup__gallery-img');
+const imgPopupDescript = document.querySelector('.popup__gallery-description');
+
 
 //common open popups
 const openPopup = item => {
@@ -123,7 +128,7 @@ const createNewElement = (elementName, imgLink) => {
     elementImg.alt = elementName;
 
     //like card
-    //card.querySelector('element__btn-like').addEventListener('click', (evt) => evt.target.classList.toggle('.element__btn-like_active'));
+    card.querySelector('.element__btn-like').addEventListener('click', (evt) => evt.target.classList.toggle('element__btn-like_active'));
 
     //delete card
     card.querySelector('.element__btn-delete').addEventListener('click', (evt) => evt.target.closest('.element').remove());
@@ -148,3 +153,6 @@ const submitPopupAdd = (evt) => {
 };
 
 addPopupSaveBtn.addEventListener('submit', submitPopupAdd);
+
+
+//open popup gallery
