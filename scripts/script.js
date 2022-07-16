@@ -82,6 +82,8 @@ addPopupOpenBtn.addEventListener('click', openAddPopup);
 
 addPopupCloseBtn.addEventListener('click', closeAddPopup);
 
+
+//
 const initialCards = [
     {
         name: 'Архыз',
@@ -109,12 +111,24 @@ const initialCards = [
     }
 ];
 
+const elementsList = document.querySelector('.elements__list');
+const cardTemplate = document.querySelector('.template__card').content;
 
+const createNewElement = (elementName, imgLink) => {
+    const card = cardTemplate.cloneNode(true);
+    const elementImg = card.querySelector('.element__img');
+
+    elementImg.src = imgLink;
+    card.querySelector('.element__title').textContent = elementName;
+    elementImg.alt = elementName;
+
+    return card;
+}
 
 const initializeList = list => {
     list.forEach(function (item) {
-        const post = createNewPost(item.name, item.link);
-        postsList.prepend(post);
+        const card = createNewElement(item.name, item.link);
+        elementsList.prepend(card);
     });
 };
 
