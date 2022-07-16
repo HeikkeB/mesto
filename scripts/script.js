@@ -22,7 +22,7 @@ const cardNamePlace = document.querySelector('.popup__input_place');
 const cardLinkPlace = document.querySelector('.popup__input_link');
 
 //popup open image
-const imgPopup = document.querySelector('.popup__gallery');
+const imgPopup = document.querySelector('.popup_gallery');
 const imgPopupPhoto = document.querySelector('.popup__gallery-img');
 const imgPopupDescript = document.querySelector('.popup__gallery-description');
 
@@ -35,6 +35,21 @@ const openPopup = item => {
 const closePopup = item => {
     item.classList.remove('popup_opened');
 };
+
+
+//IMAGE POPUP
+//open popup gallery
+/*const openImgPopup = () => {
+    openPopup(imgPopup);
+};*/
+const openImgPopup = (event) => {
+    openPopup(imgPopup);
+    const image = event.target.closest('.element__img');
+    imgPopupPhoto.src = image.src;
+    imgPopupPhoto.alt = image.alt;
+    imgPopupDescript.textContent = img.alt;
+}
+
 
 //EDIT POPUP
 //open
@@ -154,5 +169,3 @@ const submitPopupAdd = (evt) => {
 
 addPopupSaveBtn.addEventListener('submit', submitPopupAdd);
 
-
-//open popup gallery
