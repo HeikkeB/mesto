@@ -83,7 +83,7 @@ addPopupOpenBtn.addEventListener('click', openAddPopup);
 addPopupCloseBtn.addEventListener('click', closeAddPopup);
 
 
-//
+//add new card and stock pack cards
 const initialCards = [
     {
         name: 'Архыз',
@@ -122,6 +122,12 @@ const createNewElement = (elementName, imgLink) => {
     card.querySelector('.element__title').textContent = elementName;
     elementImg.alt = elementName;
 
+    //like card
+    //card.querySelector('element__btn-like').addEventListener('click', (evt) => evt.target.classList.toggle('.element__btn-like_active'));
+
+    //delete card
+    card.querySelector('.element__btn-delete').addEventListener('click', (evt) => evt.target.closest('.element').remove());
+
     return card;
 }
 
@@ -134,35 +140,11 @@ const initializeList = list => {
 
 initializeList(initialCards);
 
-/*//create card
-const createCard = ({ name, link }) => {
-    const card = template.content.cloneNode(true);
-    const cardImg = card.querySelector('.element__img');
-    const cardTitle = card.querySelector('.element__title');
-    cardTitle.innerText = name;
-    cardImg.src = link;
-    cardImg.alt = name;
-    createCardListeners(card);
-    return card;
+const submitPopupAdd = (evt) => {
+    evt.preventDefault();
+    const newCard = createNewElement(cardNamePlace.value, cardLinkPlace.value);
+    elementsList.prepend(newCard);
+    closePopup(addPopup);
 };
 
-const renderInitialCards = () => {
-    initialCards.forEach(({ name, link }) => {
-        const card = createCard({ name, link });
-        cards.appendChild(card);
-    });
-};
-
-renderInitialCards();
-
-//add card
-const addCard = (name, link) => {
-    const card = createCard({ name, link });
-    cards.prepend(card);
-};
-
-const submitAddBtn = (item) => {
-    addCard(cardNamePlace.value, cardLinkPlace.value);
-    closeAddPopup(item);
-}*/
-
+addPopupSaveBtn.addEventListener('submit', submitPopupAdd);
