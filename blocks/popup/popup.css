@@ -1,6 +1,7 @@
 .popup {
-    /*display: none;*/
     visibility: hidden;
     opacity: 0;
     transition: visibility 0s, opacity .4s ease;
+    height: 0;
+    overflow: hidden;
 }

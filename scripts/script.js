@@ -1,5 +1,5 @@
 //template
-const template = document.querySelector('.template__card');
+const template = document.querySelector('.template');
 //list cards
 const cards = document.querySelector('.elements__list');
 
@@ -144,7 +144,7 @@ const initialCards = [
 ];
 
 const elementsList = document.querySelector('.elements__list');
-const cardTemplate = document.querySelector('.template__card').content;
+const cardTemplate = document.querySelector('.template').content;
 
 const createNewElement = (elementName, imgLink) => {
     const card = cardTemplate.cloneNode(true);
