@@ -40,8 +40,8 @@ const closePopup = item => {
 
 //IMAGE POPUP
 //open
-const openImgPopup = () => {
-    const elementImg = document.querySelector('.element__img');
+const openImgPopup = (evt) => {
+    const elementImg = evt.target.closest('.element__img');
     imgPopupPhoto.src = elementImg.src;
     imgPopupPhoto.alt = elementImg.alt;
     imgPopupDescript.textContent = elementImg.alt;
