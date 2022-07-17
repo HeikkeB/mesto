@@ -22,9 +22,10 @@ const cardNamePlace = document.querySelector('.popup__input_place');
 const cardLinkPlace = document.querySelector('.popup__input_link');
 
 //popup open image
-const imgPopup = document.querySelector('.popup_gallery');
-const imgPopupPhoto = document.querySelector('.popup__gallery-img');
-const imgPopupDescript = document.querySelector('.popup__gallery-description');
+const imagePopup = document.querySelector('.popup_gallery');
+const imgPopupPhoto = imagePopup.querySelector('.popup__gallery-img');
+const imgPopupDescript = imagePopup.querySelector('.popup__gallery-description');
+const imgPopupClosedBtn = document.querySelector('.popup__closed_gallery');
 
 
 //common open popups
@@ -38,17 +39,28 @@ const closePopup = item => {
 
 
 //IMAGE POPUP
-//open popup gallery
-/*const openImgPopup = () => {
-    openPopup(imgPopup);
-};*/
-const openImgPopup = (event) => {
-    openPopup(imgPopup);
-    const image = event.target.closest('.element__img');
-    imgPopupPhoto.src = image.src;
-    imgPopupPhoto.alt = image.alt;
-    imgPopupDescript.textContent = img.alt;
+//open
+const openImgPopup = () => {
+    const elementImg = document.querySelector('.element__img');
+    imgPopupPhoto.src = elementImg.src;
+    imgPopupPhoto.alt = elementImg.alt;
+    imgPopupDescript.textContent = elementImg.alt;
+    openPopup(imagePopup);
 }
+
+//close
+const closeImgPopup = () => {
+    closePopup(imagePopup);
+}
+
+imgPopupClosedBtn.addEventListener('click', closeImgPopup);
+
+/*function showFullImage(image, capture) {
+    fullImage.src = image.src;
+    fullImage.alt = capture;
+    captureFullImage.textContent = capture;
+    openPopup(popupFullImage);
+}*/
 
 
 //EDIT POPUP
@@ -142,6 +154,9 @@ const createNewElement = (elementName, imgLink) => {
     card.querySelector('.element__title').textContent = elementName;
     elementImg.alt = elementName;
 
+    //open image
+    elementImg.addEventListener('click', openImgPopup);
+
     //like card
     card.querySelector('.element__btn-like').addEventListener('click', (evt) => evt.target.classList.toggle('element__btn-like_active'));
 
@@ -168,4 +183,7 @@ const submitPopupAdd = (evt) => {
 };
 
 addPopupSaveBtn.addEventListener('submit', submitPopupAdd);
+
+/*const elemImg = document.querySelector('.element__img');
+elemImg.addEventListener('click', openImgPopup);*/
 

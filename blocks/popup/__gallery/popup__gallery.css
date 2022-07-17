@@ -1,3 +1,11 @@
 .popup__gallery {
-    background-color: rgba(0, 0, 0, .9);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: auto;
+    align-self: center;
+    background-color: rgba(0, 0, 0, 0);
+    margin: auto;
+    z-index: 2;
 }
