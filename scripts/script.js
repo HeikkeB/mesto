@@ -150,15 +150,19 @@ const createNewCard = (elementName, imgLink) => {
     card.querySelector('.element__btn-like').addEventListener('click', (evt) => evt.target.classList.toggle('element__btn-like_active'));
 
     //delete card
-    card.querySelector('.element__btn-delete').addEventListener('click', (evt) => evt.target.closest('.element').remove());
+    card.querySelector('.element__btn-delete').addEventListener('click', () => card.remove());
 
     return card;
 }
 
+const addCard = (item) => {
+    const card = createNewCard(item.name, item.link);
+    elementsList.prepend(card);
+}
+
 const initializeList = list => {
     list.forEach(function (item) {
-        const card = createNewCard(item.name, item.link);
-        elementsList.prepend(card);
+        addCard(item);
     });
 };
 
