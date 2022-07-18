@@ -107,41 +107,14 @@ popupAddOpenBtn.addEventListener('click', openAddPopup);
 popupAddCloseBtn.addEventListener('click', closeAddPopup);
 
 
-//add new card and stock pack cards
-const initialCards = [
-    {
-        name: 'Архыз',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-        name: 'Челябинская область',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-        name: 'Иваново',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-        name: 'Камчатка',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-        name: 'Холмогорский район',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-        name: 'Байкал',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-];
-
-const createNewCard = (elementName, imgLink) => {
+//add new card
+const createNewCard = ({ name, link }) => {
     const card = template.content.firstElementChild.cloneNode(true);
     const elementImg = card.querySelector('.element__img');
 
-    elementImg.src = imgLink;
-    card.querySelector('.element__title').textContent = elementName;
-    elementImg.alt = elementName;
+    elementImg.src = link;
+    card.querySelector('.element__title').textContent = name;
+    elementImg.alt = name;
 
     //open image
     elementImg.addEventListener('click', openImgPopup);
@@ -155,14 +128,14 @@ const createNewCard = (elementName, imgLink) => {
     return card;
 }
 
-const addCard = (item) => {
-    const card = createNewCard(item.name, item.link);
+const addCard = (name, link) => {
+    const card = createNewCard({ name, link });
     elementsList.prepend(card);
 }
 
-const initializeList = list => {
-    list.forEach(function (item) {
-        addCard(item);
+const initializeList = () => {
+    initialCards.forEach(({ name, link }) => {
+        addCard(name, link);
     });
 };
 
@@ -170,8 +143,7 @@ initializeList(initialCards);
 
 const submitPopupAdd = (evt) => {
     evt.preventDefault();
-    const newCard = createNewCard(cardNamePlace.value, cardLinkPlace.value);
-    elementsList.prepend(newCard);
+    addCard(cardNamePlace.value, cardLinkPlace.value);
     closePopup(popupAdd);
 };
 
