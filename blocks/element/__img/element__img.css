@@ -6,3 +6,7 @@
     margin: 0;
     padding: 0;
 }
+
+.element__img:hover {
+    cursor: pointer;
+}
