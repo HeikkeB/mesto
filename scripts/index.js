@@ -1,3 +1,5 @@
+
+//const popupOpened = document.querySelector('.popup_opened')
 //template
 const template = document.querySelector('.template');
 //list cards
@@ -31,10 +33,14 @@ const imgPopupClosedBtn = document.querySelector('.popup__closed_gallery');
 //common open popups
 const openPopup = item => {
     item.classList.add('popup_opened');
+    document.addEventListener('keydown', handlerPopupEsc);
+    document.addEventListener('click', handlerPopupOverlay);
 };
 
-const closePopup = item => {
+const closePopup = (item) => {
     item.classList.remove('popup_opened');
+    document.removeEventListener('keydown', handlerPopupEsc);
+    document.removeEventListener('click', handlerPopupOverlay);
 };
 
 
@@ -149,4 +155,23 @@ const submitPopupAdd = (evt) => {
 
 popupAddSaveBtn.addEventListener('submit', submitPopupAdd);
 
+//close popups overlay and Esc
+//common close popups with Esc or overlay 
+const closePopupEscOverlay = () => {
+    const openedPopup = document.querySelector('.popup_opened')
+    closePopup(openedPopup);
+}
 
+//Esc
+const handlerPopupEsc = (evt) => {
+    if (evt.key === "Escape") {
+        closePopupEscOverlay();
+    }
+}
+
+//overlay
+const handlerPopupOverlay = (evt) => {
+    if (evt.target.classList.contains('popup')) {
+        closePopupEscOverlay();
+    }
+}
