@@ -47,7 +47,7 @@
                         required>
                     <input type="url" class="popup__input popup__input_link" name="place-link"
                         placeholder="Ссылка на картинку" required>
-                    <button class="popup__submit-btn popup__submit-btn_inactive" type="submit">Создать</button>
+                    <button class="popup__submit-btn" type="submit">Создать</button>
                 </form>
             </div>
         </div>
@@ -57,9 +57,13 @@
                 <button class="popup__closed popup__closed_edit" type="button" aria-label="Закрыть"></button>
                 <h2 class="popup__title">Редактировать профиль</h2>
                 <form class="popup__form popup__form_edit" action="#" name="form" method="post">
-                    <input type="text" class="popup__input popup__input_name" name="user" placeholder="Имя" required>
+                    <section class="popup__section">
+                        <input type="text" class="popup__input popup__input_name" name="user" placeholder="Имя" required
+                            minlength="2" maxlength="40">
+                        <span class="popup__input-error"></span>
+                    </section>
                     <input type="text" class="popup__input popup__input_profession" name="profession"
-                        placeholder="Занятие" required>
+                        placeholder="Занятие" required minlength="2" maxlength="200">
                     <button class="popup__submit-btn" type="submit">Сохранить</button>
                 </form>
             </div>
