@@ -17,6 +17,10 @@
     border-radius: 2px;
 }
 
+.popup__submit-btn_inactive:hover {
+    opacity: .2;
+}
+
 @media screen and (max-width: 600px) {
     .popup__submit-btn_inactive {
         width: 238px;
