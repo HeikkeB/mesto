@@ -22,6 +22,7 @@ const popupAddCloseBtn = document.querySelector('.popup__closed_add');
 const popupAddSaveBtn = document.querySelector('.popup__form_add');
 const cardNamePlace = document.querySelector('.popup__input_place');
 const cardLinkPlace = document.querySelector('.popup__input_link');
+const popupBtnSubmit = document.querySelector('.popup__submit-btn');
 
 //popup open image
 const imagePopup = document.querySelector('.popup_gallery');
@@ -99,7 +100,9 @@ popupEditForm.addEventListener('submit', submitPopupEdit);
 //ADD POPUP 
 //open 
 const openAddPopup = () => {
+    popupBtnSubmit.classList.add('popup__submit-btn_inactive');
     openPopup(popupAdd);
+
 };
 
 //close
