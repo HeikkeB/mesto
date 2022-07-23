@@ -7,8 +7,11 @@
     color: red;
     padding: 0;
     margin: 5px 0 13px;
+    opacity: 0;
 }
 
-.popup__input-error:last-of-type {
-    margin-bottom: 30px;
+@media screen and (max-width: 600px) {
+    .popup__input-error {
+        margin-left: 5px;
+    }
 }
