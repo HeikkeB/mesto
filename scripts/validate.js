@@ -7,6 +7,7 @@ const validateConfig = {
     inputErrorClass: 'popup__input_invalid'
 };
 
+
 // show input error
 const showInputError = (formElement, inputElement, errorMessage) => {
     const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
