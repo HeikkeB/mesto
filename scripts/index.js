@@ -40,7 +40,6 @@ const openPopup = item => {
 const closePopup = (item) => {
     item.classList.remove('popup_opened');
     document.removeEventListener('keydown', handlerPopupEsc);
-    document.removeEventListener('click', handlerPopupOverlay);
 };
 
 
@@ -163,22 +162,18 @@ const submitPopupAdd = (evt) => {
 popupAddSaveBtn.addEventListener('submit', submitPopupAdd);
 
 //close popups overlay and Esc
-//common close popups with Esc or overlay 
-const closePopupEscOverlay = () => {
-    const openedPopup = document.querySelector('.popup_opened')
-    closePopup(openedPopup);
-}
-
 //Esc
 const handlerPopupEsc = (evt) => {
+    const openedPopup = document.querySelector('.popup_opened')
     if (evt.key === "Escape") {
-        closePopupEscOverlay();
+        closePopup(openedPopup);
     }
-}
+};
 
 //overlay
 const handlerPopupOverlay = (evt) => {
-    if (evt.target.classList.contains('popup')) {
-        closePopupEscOverlay();
+    const openedPopup = document.querySelector('.popup_opened')
+    if (evt.target === openedPopup) {
+        closePopup(openedPopup);
     }
-}
+};

@@ -7,6 +7,15 @@ const validateConfig = {
     inputErrorClass: 'popup__input_invalid'
 };
 
+//enable validation
+const enableValidation = ({ formSelector }) => {
+    const formElements = document.querySelectorAll(formSelector);
+    const formList = Array.from(formElements);
+    const formListIteration = (formElement) => {
+        setEventListeners(formElement, validateConfig);
+    };
+    formList.forEach(formListIteration);
+};
 
 // show input error
 const showInputError = (formElement, inputElement, errorMessage) => {
@@ -76,20 +85,14 @@ const resetErrorInput = (formElement, { btnSelector, inputSelector }) => {
     toggleBtnState(inputList, btnElement, validateConfig);                       //переключаем кнопку в корректное состояние
 }
 
-//enable validation
-const enableValidation = ({ formSelector }) => {
-    const formElements = document.querySelectorAll(formSelector);
-    const formList = Array.from(formElements);
-    const formListIteration = (formElement) => {
-        const submitFormHandler = (evt) => {
-            evt.preventDefault();
-        };
-        setEventListeners(formElement, validateConfig);
-    };
-    formList.forEach(formListIteration);
-};
-
-enableValidation(validateConfig);
+enableValidation({
+    formSelector: '.popup__form',
+    inputSelector: '.popup__input',
+    btnSelector: '.popup__submit-btn',
+    inactiveBtnClass: 'popup__submit-btn_inactive',
+    errorClass: 'popup__input-error_active',
+    inputErrorClass: 'popup__input_invalid'
+});
 
 
 
