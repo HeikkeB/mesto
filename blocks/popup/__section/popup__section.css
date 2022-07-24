@@ -13,6 +13,7 @@
 
 @media screen and (max-width: 600px) {
     .popup__section {
+        align-items: center;
         width: 282px;
     }
 }

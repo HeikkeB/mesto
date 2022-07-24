@@ -11,7 +11,7 @@
     <script defer src="./scripts/index.js"></script>
 </head>
 
-<body>
+<body class="body">
     <div class="page">
         <header class="header">
             <img class="header__logo" src="./images/logo.svg" alt="Логотип Место">
@@ -43,7 +43,7 @@
             <div class="popup__container">
                 <button class="popup__closed popup__closed_add" type="button" aria-label="Закрыть"></button>
                 <h2 class="popup__title">Новое место</h2>
-                <form class="popup__form popup__form_add" name="form">
+                <form class="popup__form popup__form_add" name="form" novalidate>
                     <section class="popup__section" aria-label="строка ввода">
                         <input type="text" id="place" class="popup__input popup__input_place" name="place"
                             placeholder="Название" minlength="2" maxlength="30" required>
@@ -54,7 +54,7 @@
                             placeholder="Ссылка на картинку" required>
                         <span class="popup__input-error" id="place-link-error"></span>
                     </section>
-                    <button class="popup__submit-btn" type="submit">Создать</button>
+                    <button class="popup__submit-btn" type="submit" disabled>Создать</button>
                 </form>
             </div>
         </div>
@@ -63,7 +63,7 @@
             <div class="popup__container">
                 <button class="popup__closed popup__closed_edit" type="button" aria-label="Закрыть"></button>
                 <h2 class="popup__title">Редактировать профиль</h2>
-                <form class="popup__form popup__form_edit" action="#" name="form" method="post">
+                <form class="popup__form popup__form_edit" action="#" name="form" method="post" novalidate>
                     <section class="popup__section" aria-label="строка ввода">
                         <input type="text" id="username" class="popup__input popup__input_name" name="user"
                             placeholder="Имя" minlength="2" maxlength="40" required>
@@ -79,7 +79,7 @@
             </div>
         </div>
 
-        <div class="popup popup_gallery">
+        <div class="popup popup__gallery-background popup_gallery">
             <div class="popup__gallery">
                 <button class="popup__closed popup__closed_gallery" type="button" aria-label="Закрыть"></button>
                 <img class="popup__gallery-img" src="#" alt="#">

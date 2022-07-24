@@ -62,6 +62,20 @@ const setEventListeners = (formElement, { inputSelector, btnSelector }) => {
     })
 };
 
+
+//clear forms
+const resetErrorInput = (formElement, { btnSelector, inputSelector }) => {
+    const btnElement = formElement.querySelector(btnSelector)
+    const inputData = formElement.querySelectorAll(inputSelector) //находим все инпуты внутри формы
+    const inputList = Array.from(inputData);                               //делаем из них массив
+
+    inputList.forEach((inputElement) => {                                 //для каждого инпута из массива
+        hideInputError(formElement, inputElement);            //скрываем ошибку инпута
+    });
+
+    toggleBtnState(inputList, btnElement, validateConfig);                       //переключаем кнопку в корректное состояние
+}
+
 //enable validation
 const enableValidation = ({ formSelector }) => {
     const formElements = document.querySelectorAll(formSelector);
@@ -70,7 +84,6 @@ const enableValidation = ({ formSelector }) => {
         const submitFormHandler = (evt) => {
             evt.preventDefault();
         };
-        formElement.addEventListener('submit', submitFormHandler);
         setEventListeners(formElement, validateConfig);
     };
     formList.forEach(formListIteration);
