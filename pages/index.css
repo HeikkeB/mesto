@@ -48,6 +48,6 @@
 @import url(../blocks/popup/__input/_invalid/popup__input_invalid.css);
 
 @import url(../blocks/popup/__gallery/popup__gallery.css);
-@import url(../blocks/popup/__gallery-background/popup__gallery-background.css);
+@import url(../blocks/popup/_gallery-background/popup_gallery-background.css);
 @import url(../blocks/popup/__gallery-img/popup__gallery-img.css);
 @import url(../blocks/popup/__gallery-description/popup__gallery-description.css);
