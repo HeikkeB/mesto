@@ -40,6 +40,7 @@ const openPopup = item => {
 const closePopup = (item) => {
     item.classList.remove('popup_opened');
     document.removeEventListener('keydown', handlerPopupEsc);
+    document.removeEventListener('keydown', handlerPopupOverlay);
 };
 
 
@@ -50,7 +51,7 @@ const openImgPopup = (evt) => {
     imgPopupPhoto.src = elementImg.src;
     imgPopupPhoto.alt = elementImg.alt;
     imgPopupDescript.textContent = elementImg.alt;
-    document.addEventListener('click', handlerPopupOverlay);
+    imagePopup.addEventListener('click', handlerPopupOverlay);
     openPopup(imagePopup);
 }
 
@@ -66,7 +67,7 @@ imgPopupClosedBtn.addEventListener('click', closeImgPopup);
 //open
 const openEditPopup = () => {
     loadUserData();
-    document.addEventListener('click', handlerPopupOverlay);
+    popupEdit.addEventListener('click', handlerPopupOverlay);
     openPopup(popupEdit);
 };
 
@@ -103,7 +104,7 @@ const openAddPopup = () => {
     popupBtnSubmit.classList.add('popup__submit-btn_inactive');
     popupAddSaveBtn.reset();
     resetErrorInput(popupAddSaveBtn, validateConfig);
-    document.addEventListener('click', handlerPopupOverlay);
+    popupAdd.addEventListener('click', handlerPopupOverlay);
     openPopup(popupAdd);
 
 };
@@ -172,8 +173,7 @@ const handlerPopupEsc = (evt) => {
 
 //overlay
 const handlerPopupOverlay = (evt) => {
-    const openedPopup = document.querySelector('.popup_opened')
-    if (evt.target === openedPopup) {
-        closePopup(openedPopup);
+    if (evt.target === evt.currentTarget) {
+        closePopup(evt.target);
     }
 };

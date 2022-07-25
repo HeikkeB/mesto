@@ -14,6 +14,6 @@
 
 @media screen and (max-width: 600px) {
     .popup__input-error {
-        margin-left: 8px;
+        width: 238px;
     }
 }
