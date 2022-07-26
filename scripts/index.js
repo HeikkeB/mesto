@@ -1,5 +1,3 @@
-
-//const popupOpened = document.querySelector('.popup_opened')
 //template
 const template = document.querySelector('.template');
 //list cards
@@ -40,7 +38,6 @@ const openPopup = item => {
 const closePopup = (item) => {
     item.classList.remove('popup_opened');
     document.removeEventListener('keydown', handlerPopupEsc);
-    document.removeEventListener('keydown', handlerPopupOverlay);
 };
 
 
@@ -51,7 +48,6 @@ const openImgPopup = (evt) => {
     imgPopupPhoto.src = elementImg.src;
     imgPopupPhoto.alt = elementImg.alt;
     imgPopupDescript.textContent = elementImg.alt;
-    imagePopup.addEventListener('click', handlerPopupOverlay);
     openPopup(imagePopup);
 }
 
@@ -67,7 +63,6 @@ imgPopupClosedBtn.addEventListener('click', closeImgPopup);
 //open
 const openEditPopup = () => {
     loadUserData();
-    popupEdit.addEventListener('click', handlerPopupOverlay);
     openPopup(popupEdit);
 };
 
@@ -104,7 +99,6 @@ const openAddPopup = () => {
     popupBtnSubmit.classList.add('popup__submit-btn_inactive');
     popupAddSaveBtn.reset();
     resetErrorInput(popupAddSaveBtn, validateConfig);
-    popupAdd.addEventListener('click', handlerPopupOverlay);
     openPopup(popupAdd);
 
 };
@@ -165,8 +159,8 @@ popupAddSaveBtn.addEventListener('submit', submitPopupAdd);
 //close popups overlay and Esc
 //Esc
 const handlerPopupEsc = (evt) => {
-    const openedPopup = document.querySelector('.popup_opened')
     if (evt.key === "Escape") {
+        const openedPopup = document.querySelector('.popup_opened');
         closePopup(openedPopup);
     }
 };
@@ -177,3 +171,8 @@ const handlerPopupOverlay = (evt) => {
         closePopup(evt.target);
     }
 };
+
+//open popups overlay
+imagePopup.addEventListener('click', handlerPopupOverlay);
+popupEdit.addEventListener('click', handlerPopupOverlay);
+popupAdd.addEventListener('click', handlerPopupOverlay);
