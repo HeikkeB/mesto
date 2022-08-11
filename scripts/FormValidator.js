@@ -68,4 +68,4 @@ export class FormValidator {
 
         this._toggleBtnState();
     }
-}
+};

@@ -51,7 +51,6 @@ const closePopup = (item) => {
     document.removeEventListener('keydown', handlerPopupEsc);
 };
 
-
 //IMAGE POPUP
 //open
 const openImgPopup = (evt) => {
@@ -110,7 +109,7 @@ popupEditForm.addEventListener('submit', submitPopupEdit);
 const openAddPopup = () => {
     popupBtnSubmit.classList.add('popup__submit-btn_inactive');
     popupAddSaveBtn.reset();
-    //resetErrorInput(popupAddSaveBtn);          //добавить валидацию и функцию resetErrorInput()
+    validateFormAddProf.resetErrorInput();
     openPopup(popupAdd);
 
 };
@@ -127,7 +126,14 @@ popupAddCloseBtn.addEventListener('click', closeAddPopup);
 
 
 //add new card
-const createNewCard = ({ name, link }) => {
+function createNewCard(evt) {
+    evt.preventDefault();
+    const card = new Card(cardNamePlace.value, cardLinkPlace.value, '.template').generateCard();
+    cardsContainer.prepend(card);
+    closePopup(popupAdd);
+}
+
+/*const createNewCard = ({ name, link }) => {
     const card = template.content.firstElementChild.cloneNode(true);
     const elementImg = card.querySelector('.element__img');
 
@@ -136,18 +142,18 @@ const createNewCard = ({ name, link }) => {
     elementImg.alt = name;
 
     //open image
-    elementImg.addEventListener('click', openImgPopup);
+    //elementImg.addEventListener('click', openImgPopup);
 
     //like card
-    card.querySelector('.element__btn-like').addEventListener('click', (evt) => evt.target.classList.toggle('element__btn-like_active'));
+    //card.querySelector('.element__btn-like').addEventListener('click', (evt) => evt.target.classList.toggle('element__btn-like_active'));
 
     //delete card
-    card.querySelector('.element__btn-delete').addEventListener('click', () => card.remove());
+    //card.querySelector('.element__btn-delete').addEventListener('click', () => card.remove());
 
     return card;
-}
+}*/
 
-const addCard = (name, link) => {
+/*const addCard = (name, link) => {
     const card = createNewCard({ name, link });
     cardsContainer.prepend(card);
 }
@@ -158,15 +164,20 @@ const initializeList = () => {
     });
 };
 
-initializeList(initialCards);
+initializeList(initialCards);*/
 
-const submitPopupAdd = (evt) => {
+/*const submitPopupAdd = (evt) => {
     evt.preventDefault();
     addCard(cardNamePlace.value, cardLinkPlace.value);
     closePopup(popupAdd);
-};
+};*/
 
-popupAddSaveBtn.addEventListener('submit', submitPopupAdd);
+initialCards.forEach((item) => {
+    const card = new Card(item.name, item.link, '.template').generateCard();
+    cardsContainer.prepend(card);
+});
+
+popupAddSaveBtn.addEventListener('submit', createNewCard);
 
 //close popups overlay and Esc
 //Esc
@@ -191,6 +202,9 @@ popupAdd.addEventListener('click', handlerPopupOverlay);
 
 //Turn on validation
 const validateFormEditProf = new FormValidator(validateConfig, popupEditForm);
-
+const validateFormAddProf = new FormValidator(validateConfig, popupAddSaveBtn);
 
 validateFormEditProf.enableValidation();
+validateFormAddProf.enableValidation();
+
+export { openImgPopup };
