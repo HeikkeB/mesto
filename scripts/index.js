@@ -1,3 +1,6 @@
+import { FormValidator } from './FormValidator.js';
+import { Card } from './Card.js';
+
 //template
 const template = document.querySelector('.template');
 //list cards
@@ -28,6 +31,14 @@ const imgPopupPhoto = imagePopup.querySelector('.popup__gallery-img');
 const imgPopupDescript = imagePopup.querySelector('.popup__gallery-description');
 const imgPopupClosedBtn = document.querySelector('.popup__closed_gallery');
 
+const validateConfig = {
+    formSelector: '.popup__form',
+    inputSelector: '.popup__input',
+    btnSelector: '.popup__submit-btn',
+    inactiveBtnClass: 'popup__submit-btn_inactive',
+    errorClass: 'popup__input-error_active',
+    inputErrorClass: 'popup__input_invalid'
+};
 
 //common open popups
 const openPopup = item => {
@@ -64,6 +75,7 @@ imgPopupClosedBtn.addEventListener('click', closeImgPopup);
 const openEditPopup = () => {
     loadUserData();
     openPopup(popupEdit);
+    validateFormEditProf.resetErrorInput();
 };
 
 //close
@@ -98,7 +110,7 @@ popupEditForm.addEventListener('submit', submitPopupEdit);
 const openAddPopup = () => {
     popupBtnSubmit.classList.add('popup__submit-btn_inactive');
     popupAddSaveBtn.reset();
-    resetErrorInput(popupAddSaveBtn, validateConfig);
+    //resetErrorInput(popupAddSaveBtn);          //добавить валидацию и функцию resetErrorInput()
     openPopup(popupAdd);
 
 };
@@ -176,3 +188,9 @@ const handlerPopupOverlay = (evt) => {
 imagePopup.addEventListener('click', handlerPopupOverlay);
 popupEdit.addEventListener('click', handlerPopupOverlay);
 popupAdd.addEventListener('click', handlerPopupOverlay);
+
+//Turn on validation
+const validateFormEditProf = new FormValidator(validateConfig, popupEditForm);
+
+
+validateFormEditProf.enableValidation();
