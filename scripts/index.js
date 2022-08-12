@@ -5,7 +5,7 @@ import { Card } from './Card.js';
 const cardsContainer = document.querySelector('.elements__list');
 
 //popup edit profile
-const popupEdit = document.querySelector('.popup_edit');
+const popupEdit = document.querySelector('.popup_type_profile-edit');
 const popupEditForm = document.querySelector('.popup__form_edit')
 const popupEditClosedBtn = document.querySelector('.popup__closed_edit');
 const profileBtnEdit = document.querySelector('.profile__btn-edit');
@@ -15,7 +15,7 @@ const profileDescription = document.querySelector('.profile__description');
 const profileUsername = document.querySelector('.profile__username');
 
 //popup add card
-const popupAdd = document.querySelector('.popup_add');
+const popupAdd = document.querySelector('.popup_type_image-add');
 const popupAddOpenBtn = document.querySelector('.profile__btn-add');
 const popupAddCloseBtn = document.querySelector('.popup__closed_add');
 const popupAddSaveBtn = document.querySelector('.popup__form_add');
@@ -24,7 +24,7 @@ const cardLinkPlace = document.querySelector('.popup__input_link');
 const popupBtnSubmit = document.querySelector('.popup__submit-btn');
 
 //popup open image
-const imagePopup = document.querySelector('.popup_gallery');
+const imagePopup = document.querySelector('.popup_type_image-gallery');
 const imgPopupPhoto = imagePopup.querySelector('.popup__gallery-img');
 const imgPopupDescript = imagePopup.querySelector('.popup__gallery-description');
 const imgPopupClosedBtn = document.querySelector('.popup__closed_gallery');
@@ -102,7 +102,7 @@ popupEditForm.addEventListener('submit', submitPopupEdit);
 //ADD POPUP 
 //open 
 const openAddPopup = () => {
-    popupBtnSubmit.classList.add('popup__submit-btn_inactive');
+    validateFormAddProf.setBtnInvalid();
     popupAddSaveBtn.reset();
     validateFormAddProf.resetErrorInput();
     openPopup(popupAdd);
@@ -121,10 +121,7 @@ popupAddCloseBtn.addEventListener('click', closeAddPopup);
 
 
 //add new card
-const createNewCard = (item) => {
-    const card = new Card(item.name, item.link, '.template', openImgPopup).generateCard();
-    return card;
-};
+const createNewCard = (item) => new Card(item, '.template', openImgPopup).generateCard();
 
 function addCard(evt) {
     evt.preventDefault();
