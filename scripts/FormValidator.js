@@ -8,15 +8,19 @@ export class FormValidator {
         this._setEventListeners();
     }
 
+    _getElementError(inputElement) {
+        return this._errorElement = this._formElement.querySelector(`#${inputElement.id}-error`);
+    }
+
     _showInputError(inputElement, errorMessage) {
-        this._errorElement = this._formElement.querySelector(`#${inputElement.id}-error`);
+        this._getElementError(inputElement);
         this._errorElement.textContent = errorMessage;
         this._errorElement.classList.add(this._config.errorClass);
         inputElement.classList.add(this._config.inputErrorClass);
     }
 
     _hideInputError(inputElement) {
-        this._errorElement = this._formElement.querySelector(`#${inputElement.id}-error`);
+        this._getElementError(inputElement);
         this._errorElement.textContent = '';
         inputElement.classList.remove(this._config.inputErrorClass);
     }
