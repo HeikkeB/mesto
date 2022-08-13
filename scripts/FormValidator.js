@@ -66,7 +66,6 @@ export class FormValidator {
     }
 
     resetErrorInput() {
-        this._formElement.querySelectorAll(this._config.inputSelector);
         this._inputList.forEach((inputElement) => {
             this._hideInputError(inputElement)
         });

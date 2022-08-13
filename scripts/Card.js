@@ -17,6 +17,7 @@ export class Card {
 
     generateCard() {
         this._element = this._getTemplate();
+        this.buttonLike = this._element.querySelector('.element__btn-like');
         this._setEventListeners();
         this._element.querySelector('.element__img').src = this._link;
         this._element.querySelector('.element__title').textContent = this._name;
@@ -31,11 +32,11 @@ export class Card {
     }
 
     _handleCardToggle() {
-        this._like = this._element.querySelector('.element__btn-like').classList.toggle('element__btn-like_active');
+        this.buttonLike.classList.toggle('element__btn-like_active');
     }
 
     _setEventListeners() {
-        this._element.querySelector('.element__btn-like').addEventListener('click', () => this._handleCardToggle());
+        this.buttonLike.addEventListener('click', () => this._handleCardToggle());
         this._element.querySelector('.element__btn-delete').addEventListener('click', () => this._handleCardDelete());
         this._element.querySelector('.element__img').addEventListener('click', () => this._openImgPopup(this._name, this._link));
     }
