@@ -42,7 +42,7 @@ const validateConfig = {
     inputErrorClass: 'popup__input_invalid'
 };
 
-const createNewCard = (item) => new Card(item, '.template', () => popupImage.open(item)).generateCard();
+const createNewCard = (item) => new Card(item, '.template', { handleCardClick: () => popupWithImage.open(item) }).generateCard();
 
 const cardSection = new Section({
     items: initialCards, renderer: (item) => {
@@ -63,6 +63,9 @@ const popupEditProfile = new PopupWithForm(popupEdit, inputValues => {
 
 popupEditProfile.setEventListeners();
 
+const popupWithImage = new PopupWithImage(imagePopup);
+popupWithImage.setEventListeners();
+
 const popupAddCard = new PopupWithForm(popupAdd, inputValues => {
     const card = createNewCard(inputValues);
     cardSection.addItem(card);
@@ -70,9 +73,6 @@ const popupAddCard = new PopupWithForm(popupAdd, inputValues => {
 });
 
 popupAddCard.setEventListeners();
-
-const popupImage = new PopupWithImage(imagePopup);
-popupImage.setEventListeners();
 
 const validateFormEditProf = new FormValidator(validateConfig, popupEditForm);
 const validateFormAddProf = new FormValidator(validateConfig, popupAddSaveBtn);
