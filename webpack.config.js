@@ -12,11 +12,11 @@ module.exports = {
         filename: "main.js",
     },
     plugins: [
+        new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             template: './src/index.html'
         }),
         new MiniCssExtractPlugin(),
-        new CleanWebpackPlugin()
     ],
     module: {
         rules: [
