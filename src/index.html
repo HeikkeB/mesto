@@ -5,19 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mesto</title>
-    <link rel="stylesheet" href="./pages/index.css">
-    <script type="module" defer src="./pages/index.js"></script>
+    <!--<link rel="stylesheet" href="./pages/index.css">-->
+    <!--<script type="module" defer src="./pages/index.js"></script>-->
 </head>
 
 <body class="body">
     <div class="page">
         <header class="header">
-            <img class="header__logo" src="./images/logo.svg" alt="Логотип Место">
+            <img class="header__logo" src="<%=require('./images/logo.svg')%>" alt="Логотип Место">
         </header>
 
         <main class="content">
             <section class="profile">
-                <img class="profile__avatar" src="./images/image.png" alt="аватар">
+                <img class="profile__avatar" src="<%=require('./images/image.png')%>" alt="аватар">
                 <div class="profile__info">
                     <h1 class="profile__username">Жак-Ив Кусто</h1>
                     <button class="profile__btn-edit" type="button" aria-label="Редактирование"></button>
