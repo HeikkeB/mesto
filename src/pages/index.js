@@ -1,30 +1,20 @@
 import '../pages/index.css'
 
 import FormValidator from '../components/FormValidator.js';
-import { initialCards } from '../components/cards.js';
+import { initialCards } from '../utils/cards.js';
 import Card from '../components/Card.js';
 import Section from '../components/Section.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
 
-//list cards
-const cardsContainer = document.querySelector('.elements__list');
-
 //popup edit profile
-const popupEdit = document.querySelector('.popup_type_profile-edit');
 const popupEditForm = document.querySelector('.popup__form_edit')
 const profileBtnEdit = document.querySelector('.profile__btn-edit');
-const profileDescription = document.querySelector('.profile__description');  //userinfo
-const profileUsername = document.querySelector('.profile__username');  //userinfo
 
 //popup add card
-const popupAdd = document.querySelector('.popup_type_image-add');
 const popupAddOpenBtn = document.querySelector('.profile__btn-add');
 const popupAddSaveBtn = document.querySelector('.popup__form_add');
-
-//popup open image
-const imagePopup = document.querySelector('.popup_type_image-gallery');
 
 const validateConfig = {
     formSelector: '.popup__form',
@@ -35,6 +25,15 @@ const validateConfig = {
     inputErrorClass: 'popup__input_invalid'
 };
 
+const selectors = {
+    cardsContainer: '.elements__list',
+    popupEdit: '.popup_type_profile-edit',
+    popupAdd: '.popup_type_image-add',
+    imagePopup: '.popup_type_image-gallery',
+    profileUsername: '.profile__username',
+    profileDescription: '.profile__description',
+}
+
 const createNewCard = (item) => new Card(item, '.template', { handleCardClick: () => popupWithImage.open(item) }).generateCard();
 
 const cardSection = new Section({
@@ -43,23 +42,23 @@ const cardSection = new Section({
         cardSection.addItem(card)
     }
 },
-    cardsContainer);
+    selectors.cardsContainer);
 
-cardSection.renderItems();
+cardSection.renderItems(initialCards);
 
-const dataProfile = new UserInfo({ selectorUsername: profileUsername, selectorUserinfo: profileDescription });
+const dataProfile = new UserInfo({ selectorUsername: selectors.profileUsername, selectorUserinfo: selectors.profileDescription });
 
-const popupEditProfile = new PopupWithForm(popupEdit, inputValues => {
+const popupEditProfile = new PopupWithForm(selectors.popupEdit, inputValues => {
     dataProfile.setUserInfo(inputValues);
     popupEditProfile.close();
 });
 
 popupEditProfile.setEventListeners();
 
-const popupWithImage = new PopupWithImage(imagePopup);
+const popupWithImage = new PopupWithImage(selectors.imagePopup);
 popupWithImage.setEventListeners();
 
-const popupAddCard = new PopupWithForm(popupAdd, inputValues => {
+const popupAddCard = new PopupWithForm(selectors.popupAdd, inputValues => {
     const card = createNewCard(inputValues);
     cardSection.addItem(card);
     popupAddCard.close();
