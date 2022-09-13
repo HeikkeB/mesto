@@ -16,13 +16,13 @@
 
 .elements__list{display:grid;gap:20px 17px;grid-template-columns:repeat(auto-fit,282px);justify-content:center;justify-items:center;list-style-type:none;margin:0 auto;padding:0}@media screen and (max-width:320px){.elements__list{row-gap:20px}}
 .element{background-color:#fff;border-radius:10px;display:flex;flex-direction:column;height:361px;overflow:hidden;position:relative;width:282px}
-.element__img{border-radius:10px 10px 0 0;height:282px;margin:0;-o-object-fit:cover;object-fit:cover;padding:0;width:282px}.element__img:hover{cursor:pointer}
+.element__img{margin:0;min-height:282px;-o-object-fit:cover;object-fit:cover;padding:0;width:282px}.element__img:hover{cursor:pointer}
 .element__title{color:#000;font-family:Inter,Arial,sans-serif;font-size:24px;font-style:normal;font-weight:900;line-height:1.2;margin:0;max-width:190px;overflow:hidden;padding:0;text-overflow:ellipsis;white-space:nowrap}
 .element__description{align-items:center;display:flex;justify-content:space-between;margin:0;padding:25px 15px 31px 21px;width:246px}
 .element__like-container{display:flex;flex-direction:column}
 .element__btn-like{background-color:#fff;background-image:url(images/btn_like.7913ddfd147a48616b09.svg);background-repeat:no-repeat;border:none;cursor:pointer;height:19px;margin:0;-o-object-fit:cover;object-fit:cover;padding:0;transition:opacity .3s ease;width:22px}.element__btn-like:hover{opacity:.5}
 .element__btn-like_active{background-image:url(images/btn_like_active.fe17a515669479b1e649.svg);opacity:1}
-.element__btn-counter{color:#000;font-family:Inter,Arial,sans-serif;font-size:13px;font-style:normal;font-weight:400;line-height:1.2;margin:3px 0 0;padding:0;text-align:center}
+.element__like-counter{color:#000;font-family:Inter,Arial,sans-serif;font-size:13px;font-style:normal;font-weight:400;line-height:1.2;margin:3px 0 0;padding:0;text-align:center}
 .element__btn-delete{background-color:transparent;background-image:url(images/Trash.823b0cf1b0b7e9cb7cad.svg);border:none;cursor:pointer;height:19px;margin:0;-o-object-fit:cover;object-fit:cover;padding:0;position:absolute;right:20px;top:20px;transition:opacity .3s ease;width:18px}.element__btn-delete:hover{opacity:.5}
 .footer{display:flex;justify-content:flex-start;margin:0;max-width:880px;padding:67px 0 60px;width:100%}@media screen and (max-width:320px){.footer{max-width:282px;padding:48px 0 36px}}
 .footer__copyright{color:#545454;font-family:Inter,Arial,sans-serif;font-size:18px;font-style:normal;font-weight:400;line-height:1.2;margin:0;padding:0}
