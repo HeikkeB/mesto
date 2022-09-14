@@ -130,6 +130,7 @@ function handlePopupProfile(inputValues) {
     api.setUserInfo(inputValues)
         .then((data) => {
             userInfo.setUserInfo(data);
+            userInfo.setUserAvatar(data);
             popupEditProfile.close();
         })
         .catch((err) => {
