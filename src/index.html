@@ -5,8 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mesto</title>
-    <!--<link rel="stylesheet" href="./pages/index.css">-->
-    <!--<script type="module" defer src="./pages/index.js"></script>-->
 </head>
 
 <body class="body">
@@ -17,11 +15,13 @@
 
         <main class="content">
             <section class="profile">
-                <img class="profile__avatar" src="<%=require('./images/image.png')%>" alt="аватар">
+                <button class="profile__edit-avatar">
+                    <img class="profile__avatar" src="<%=require('./images/image.png')%>" alt="аватар">
+                </button>
                 <div class="profile__info">
-                    <h1 class="profile__username">Жак-Ив Кусто</h1>
+                    <h1 class="profile__username"></h1>
                     <button class="profile__btn-edit" type="button" aria-label="Редактирование"></button>
-                    <p class="profile__description">Исследователь океана</p>
+                    <p class="profile__description"></p>
 
                 </div>
                 <button class="profile__btn-add" type="button" aria-label="Добавить фото"></button>
@@ -43,9 +43,9 @@
                 <h2 class="popup__title">Новое место</h2>
                 <form class="popup__form popup__form_add" name="form" novalidate>
                     <section class="popup__section" aria-label="строка ввода">
-                        <input type="text" id="place" class="popup__input popup__input_place" name="place"
+                        <input type="text" id="name" class="popup__input popup__input_place" name="name"
                             placeholder="Название" minlength="2" maxlength="30" required>
-                        <span class="popup__input-error" id="place-error"></span>
+                        <span class="popup__input-error" id="name-error"></span>
                     </section>
                     <section class="popup__section" aria-label="строка ввода">
                         <input id="link" type="url" class="popup__input popup__input_link" name="link"
@@ -85,12 +85,42 @@
             </div>
         </div>
 
+        <div class="popup popup_type_confirm">
+            <div class="popup__container">
+                <button class="popup__closed popup__closed_confirm" type="button" aria-label="Закрыть"></button>
+                <h2 class="popup__title popup__title-confirm">Вы уверены?</h2>
+                <form class="popup__form">
+                    <button class="popup__submit-btn popup__submit-btn_type_confirm" type="submit">Да</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="popup popup_type_avatar">
+            <div class="popup__container">
+                <button class="popup__closed popup__closed_avatar" type="button" aria-label="Закрыть"></button>
+                <h2 class="popup__title">Обновить аватар</h2>
+                <form class="popup__form popup__form_avatar" name="form" method="post" novalidate>
+                    <section class="popup__section-avatar" aria-label="строка ввода">
+                        <input id="avatar" type="url" class="popup__input popup__input_link" name="avatar"
+                            placeholder="Ссылка на картинку" required>
+                        <span class="popup__input-error" id="avatar-error"></span>
+                    </section>
+                    <button class="popup__submit-btn popup__submit-btn_type_avatar" type="submit"
+                        disabled>Сохранить</button>
+                </form>
+            </div>
+        </div>
+
         <template class="template">
             <li class="element">
                 <img class="element__img">
                 <div class="element__description">
                     <h2 class="element__title"></h2>
-                    <button class="element__btn-like" type="button" aria-label="Нравится"></button>
+                    <div class="element__like-container">
+                        <button class="element__btn-like" type="button" aria-label="Нравится"></button>
+                        <p class="element__like-counter">0</p>
+                    </div>
+
                     <button class="element__btn-delete" type="button" aria-label="Удалить"></button>
                 </div>
             </li>
