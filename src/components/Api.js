@@ -17,6 +17,10 @@ export default class Api {
             headers: this._headers
         })
             .then(this._handleResponse)
+            .then((res) => {
+                this._id = res._id;
+                return res;
+            })
     }
 
     getInitialCards() {
@@ -47,8 +51,8 @@ export default class Api {
             .then(this._handleResponse);
     }
 
-    deleteCard(Id) {
-        return fetch(`${this._baseUrl}/cards/${Id}`, {
+    deleteCard(card) {
+        return fetch(`${this._baseUrl}/cards/${card._id}`, {
             method: 'DELETE',
             headers: this._headers
         })

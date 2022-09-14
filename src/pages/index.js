@@ -75,17 +75,17 @@ const userInfo = new UserInfo({
 })
 
 function createNewCard(item) {
-    const card = new Card(item, '.template', {
-        handleCardClick: () => popupWithImage.open(item)
-    },
+    const card = new Card({ ...item, userId }, '.template', api._id,
+        {
+            handleCardClick: () => popupWithImage.open(item)
+        },
         api,
         {
             handleDeleteClick: (item) => {
                 popupWithConfirm.open(item);
                 templateCard = card;
             }
-        },
-    ).generateCard();
+        }).generateCard();
 
     return card;
 }
