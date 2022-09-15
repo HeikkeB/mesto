@@ -9,7 +9,6 @@ export default class Card {
         this._ownerId = ownerId;
         this.likeId = data.likes;////
         this._likes = data.likes.length;
-        this._idOwner = data.owner._id;//////
         this._templateSelector = templateSelector;/////
         this._handleCardClick = handleCardClick;/////       
         this._handleDeleteClick = handleDeleteClick;///////
@@ -40,9 +39,6 @@ export default class Card {
     }
 
     _isOwner(card) {
-        /*if (this._idOwner !== this._userId) {
-            this._deleteBtn.remove();
-        }*/
         return card.owner._id !== this._ownerId;
     }
 
@@ -85,11 +81,6 @@ export default class Card {
             })
     }
 
-    /*handleCardDelete() {
-        this._element.remove();
-        this._element = null;
-    }*/
-
     _setEventListeners() {
         this._element.querySelector('.element__img').addEventListener('click', () => this._handleCardClick());
 
@@ -106,6 +97,4 @@ export default class Card {
             this._handleDeleteClick(this._data);
         })
     }
-
-
 }
