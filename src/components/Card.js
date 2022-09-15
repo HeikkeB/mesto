@@ -42,10 +42,6 @@ export default class Card {
         return card.owner._id !== this._ownerId;
     }
 
-    _remove() {
-        this._element.remove();
-        this._element = null;
-    }
     _onLike() {
         this._likeButton.classList.add('element__btn-like_active');
     }
@@ -69,6 +65,9 @@ export default class Card {
                 this._likeCounter.textContent = this._likes;
                 this._onLike();
             })
+            .catch((err) => {
+                console.log(err);
+            })
     }
 
     _deleteLike() {
@@ -78,6 +77,9 @@ export default class Card {
                 this._likes = res.likes.length;
                 this._likeCounter.textContent = this._likes;
                 this._offLike();
+            })
+            .catch((err) => {
+                console.log(err);
             })
     }
 
@@ -96,5 +98,10 @@ export default class Card {
         this._deleteBtn.addEventListener('click', () => {
             this._handleDeleteClick(this._data);
         })
+    }
+
+    delete() {
+        this._element.remove();
+        this._element = null;
     }
 }

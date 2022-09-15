@@ -11,7 +11,7 @@ import Api from '../components/Api.js';
 import PopupWithConfirm from '../components/PopupWithConfirm.js';
 
 let userId = null;
-let templateCard = null;
+let templateCard;
 
 //popup edit profile
 const popupEditForm = document.querySelector('.popup__form_edit')
@@ -55,13 +55,10 @@ const selectors = {
     avatarBtn: 'profile__edit-avatar'
 }
 
-Promise.all([
-    api.getUserInfo(),
-    api.getInitialCards()
-])
-    .then((values) => {
-        userInfo.setUserInfo(values[0])
-        cardSection.renderItems(values[1]);
+Promise.all([api.getUserInfo(), api.getInitialCards()])
+    .then(([userData, initCards]) => {
+        userInfo.setUserInfo(userData);
+        cardSection.renderItems(initCards);
     })
     .catch((err) => {
         console.log(err);
@@ -81,7 +78,7 @@ function createNewCard(item) {
         },
         api,
         {
-            handleDeleteClick: (item) => {
+            handleDeleteClick: () => {
                 popupWithConfirm.open(item);
                 templateCard = card;
             }
@@ -89,6 +86,7 @@ function createNewCard(item) {
 
     return card;
 }
+
 ////////
 
 const popupWithImage = new PopupWithImage(selectors.imagePopup);
@@ -149,8 +147,9 @@ popupEditProfile.setEventListeners();
 function handleCardDelete(data) {
     api.deleteCard(data)
         .then(() => {
-            templateCard.remove();
+            templateCard.delete;
             popupWithConfirm.close();
+
         })
         .catch(err => console.log(err))
 }
