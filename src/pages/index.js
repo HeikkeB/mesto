@@ -66,8 +66,6 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
 
 ///////////
 
-const popupWithConfirm = new PopupWithConfirm(selectors.popupConfirm, handleCardDelete);
-popupWithConfirm.setEventListeners();
 
 const userInfo = new UserInfo({
     selectorUsername: selectors.profileUsername,
@@ -81,24 +79,8 @@ function createNewCard(item) {
             handleCardClick: () => popupWithImage.open(item)
         },
         api,
-        {
-            handleDeleteClick: (card) => {
-                popupWithConfirm.open(card);
 
-                //templateCard = card;
-            }
-        },
-        /*{
-            toggleLike: function (card) {
-                api.toggleLike(card)
-                    .then(res => {
-                        //card.upDateLikes(res);
-                        card.toggleLikeBoolean(card._isLiked(res));
-                        card._data = res
-                    })
-            }
-
-        }*/
+        handleDeleteClick,
     ).generateCard();
 
     return card
@@ -106,16 +88,51 @@ function createNewCard(item) {
 
 ////////
 
-function handleCardDelete(card) {
+function handlePopupConfirm(id, card) {
+    api.deleteCard(id)
+        .then(() => {
+            card.delete();
+            popupWithConfirm.close();
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+}
+
+function handleDeleteClick(id, card) {
+    popupWithConfirm.setSubmitAction(() => handlePopupConfirm(id, card))
+    popupWithConfirm.open();
+}
+
+const popupWithConfirm = new PopupWithConfirm(selectors.popupConfirm)
+
+popupWithConfirm.setEventListeners();
+
+
+
+
+
+
+/*function handleCardDelete(card) {
     api.deleteCard(card._id)
         .then(() => {
-            card.delete;
-
+            card.delete();
             popupWithConfirm.close();
-
         })
         .catch(err => console.log(err))
-}
+}*/
+
+/*const popupWithConfirm = new PopupWithConfirm(selectors.popupConfirm,
+    (card) => {
+        api.deleteCard(card._id)
+            .then(() => {
+                card.delete();
+                popupWithConfirm.close();
+            })
+            .catch(err => console.log(err))
+    }
+);*/
+
 
 ///////////
 

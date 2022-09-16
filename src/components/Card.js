@@ -1,7 +1,5 @@
-import { data } from "autoprefixer";
-
 export default class Card {
-    constructor(data, templateSelector, ownerId, { handleCardClick }, api, { handleDeleteClick }) {
+    constructor(data, templateSelector, ownerId, { handleCardClick }, api, handleDeleteClick) {
         this._data = data;//////
         this._link = data.link;/////
         this._name = data.name;/////
@@ -101,21 +99,14 @@ export default class Card {
         this._likeButton.addEventListener('click', () => {
 
             if (this._likeButton.classList.contains('element__btn-like_active')) {
-
                 this._deleteLike();
-
             } else {
-
                 this._handleLikeClick();
-
-
-
             }
-
         });
 
         this._deleteBtn.addEventListener('click', () => {
-            this._handleDeleteClick(this._data);
+            this._handleDeleteClick(this._id, this);
         })
     }
 
