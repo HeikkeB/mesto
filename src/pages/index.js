@@ -11,7 +11,6 @@ import Api from '../components/Api.js';
 import PopupWithConfirm from '../components/PopupWithConfirm.js';
 
 let userId = null;
-let templateCard;
 
 //popup edit profile
 const popupEditForm = document.querySelector('.popup__form_edit')
@@ -79,7 +78,6 @@ function createNewCard(item) {
             handleCardClick: () => popupWithImage.open(item)
         },
         api,
-
         handleDeleteClick,
     ).generateCard();
 
@@ -107,32 +105,6 @@ function handleDeleteClick(id, card) {
 const popupWithConfirm = new PopupWithConfirm(selectors.popupConfirm)
 
 popupWithConfirm.setEventListeners();
-
-
-
-
-
-
-/*function handleCardDelete(card) {
-    api.deleteCard(card._id)
-        .then(() => {
-            card.delete();
-            popupWithConfirm.close();
-        })
-        .catch(err => console.log(err))
-}*/
-
-/*const popupWithConfirm = new PopupWithConfirm(selectors.popupConfirm,
-    (card) => {
-        api.deleteCard(card._id)
-            .then(() => {
-                card.delete();
-                popupWithConfirm.close();
-            })
-            .catch(err => console.log(err))
-    }
-);*/
-
 
 ///////////
 

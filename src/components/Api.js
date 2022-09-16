@@ -86,8 +86,4 @@ export default class Api {
         })
             .then(this._handleResponse);
     }
-
-    toggleLike(card) {
-        return card.likes.some(user => user._id === this._id) ? this.dislikeCard(card) : this.likeCard(card);
-    }
 }
