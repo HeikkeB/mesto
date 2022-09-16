@@ -1,3 +1,5 @@
+import { data } from "autoprefixer";
+
 export default class Card {
     constructor(data, templateSelector, ownerId, { handleCardClick }, api, { handleDeleteClick }) {
         this._data = data;//////
@@ -7,7 +9,7 @@ export default class Card {
         this._id = data._id;
         this._api = api;
         this._ownerId = ownerId;
-        this.likeId = data.likes;////
+        this._likeId = data.likes;////
         this._likes = data.likes.length;
         this._templateSelector = templateSelector;/////
         this._handleCardClick = handleCardClick;/////       
@@ -22,6 +24,10 @@ export default class Card {
             .cloneNode(true);
     }
 
+    _isLiked() {
+        return this._likeId.some(user => user._id === this._ownerId)
+    }
+
     generateCard() {
         this._element = this._getTemplate();
         this._element.querySelector('.element__img').src = this._link;
@@ -32,6 +38,8 @@ export default class Card {
         this._likeCounter.textContent = this._likes;
         this._deleteBtn = this._element.querySelector('.element__btn-delete');
         this.myLikeCard(this.findLike());
+        this.toggleLikeBoolean(this._isLiked());
+        //this.upDateLikes(this._data);
         this._setEventListeners();
         if (this._isOwner(this._data)) this._deleteBtn.remove();
 
@@ -49,7 +57,7 @@ export default class Card {
         this._likeButton.classList.remove('element__btn-like_active');
     }
     findLike() {
-        return Boolean(this.likeId.find((data => data._id !== this._userId)));
+        return Boolean(this._likeId.find((data => data._id !== this._userId)));
     }
     myLikeCard(myLike) {
         if (myLike) {
@@ -83,16 +91,27 @@ export default class Card {
             })
     }
 
+    toggleLikeBoolean(liked) {
+        liked ? this._likeButton.classList.add('element__btn-like_active') : this._likeButton.classList.remove('element__btn-like_active');
+    }
+
     _setEventListeners() {
         this._element.querySelector('.element__img').addEventListener('click', () => this._handleCardClick());
 
         this._likeButton.addEventListener('click', () => {
+
             if (this._likeButton.classList.contains('element__btn-like_active')) {
+
                 this._deleteLike();
+
             } else {
+
                 this._handleLikeClick();
 
+
+
             }
+
         });
 
         this._deleteBtn.addEventListener('click', () => {

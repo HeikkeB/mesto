@@ -64,6 +64,10 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
         console.log(err);
     });
 
+///////////
+
+const popupWithConfirm = new PopupWithConfirm(selectors.popupConfirm, handleCardDelete);
+popupWithConfirm.setEventListeners();
 
 const userInfo = new UserInfo({
     selectorUsername: selectors.profileUsername,
@@ -78,16 +82,42 @@ function createNewCard(item) {
         },
         api,
         {
-            handleDeleteClick: () => {
-                popupWithConfirm.open(item);
-                templateCard = card;
-            }
-        }).generateCard();
+            handleDeleteClick: (card) => {
+                popupWithConfirm.open(card);
 
-    return card;
+                //templateCard = card;
+            }
+        },
+        /*{
+            toggleLike: function (card) {
+                api.toggleLike(card)
+                    .then(res => {
+                        //card.upDateLikes(res);
+                        card.toggleLikeBoolean(card._isLiked(res));
+                        card._data = res
+                    })
+            }
+
+        }*/
+    ).generateCard();
+
+    return card
 }
 
 ////////
+
+function handleCardDelete(card) {
+    api.deleteCard(card._id)
+        .then(() => {
+            card.delete;
+
+            popupWithConfirm.close();
+
+        })
+        .catch(err => console.log(err))
+}
+
+///////////
 
 const popupWithImage = new PopupWithImage(selectors.imagePopup);
 popupWithImage.setEventListeners();
@@ -141,21 +171,6 @@ function handlePopupProfile(inputValues) {
 
 const popupEditProfile = new PopupWithForm(selectors.popupEdit, handlePopupProfile);
 popupEditProfile.setEventListeners();
-
-///////////
-
-function handleCardDelete(data) {
-    api.deleteCard(data)
-        .then(() => {
-            templateCard.delete;
-            popupWithConfirm.close();
-
-        })
-        .catch(err => console.log(err))
-}
-
-const popupWithConfirm = new PopupWithConfirm(selectors.popupConfirm, handleCardDelete);
-popupWithConfirm.setEventListeners();
 
 ////////
 

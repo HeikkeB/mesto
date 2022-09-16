@@ -12,6 +12,14 @@ export default class Api {
         }
     }
 
+    deleteCard(id) {
+        return fetch(`${this._baseUrl}/cards/${id}`, {
+            method: 'DELETE',
+            headers: this._headers
+        })
+            .then(this._handleResponse)
+    }
+
     getUserInfo() {
         return fetch(`${this._baseUrl}/users/me`, {
             headers: this._headers
@@ -51,15 +59,6 @@ export default class Api {
             .then(this._handleResponse);
     }
 
-    deleteCard(card) {
-        return fetch(`${this._baseUrl}/cards/${card._id}`, {
-            method: 'DELETE',
-            headers: this._headers
-        })
-            .then(this._handleResponse)
-    }
-
-
     updateAvatar(data) {
         return fetch(`${this._baseUrl}/users/me/avatar`, {
             method: 'PATCH',
@@ -72,19 +71,23 @@ export default class Api {
     }
 
 
-    likeCard(Id) {
-        return fetch(`${this._baseUrl}/cards/likes/${Id}`, {
+    likeCard(card) {
+        return fetch(`${this._baseUrl}/cards/likes/${card}`, {
             method: "PUT",
             headers: this._headers,
         })
             .then(this._handleResponse);
     }
 
-    dislikeCard(Id) {
-        return fetch(`${this._baseUrl}/cards/likes/${Id}`, {
+    dislikeCard(card) {
+        return fetch(`${this._baseUrl}/cards/likes/${card}`, {
             method: "DELETE",
             headers: this._headers,
         })
             .then(this._handleResponse);
+    }
+
+    toggleLike(card) {
+        return card.likes.some(user => user._id === this._id) ? this.dislikeCard(card) : this.likeCard(card);
     }
 }
